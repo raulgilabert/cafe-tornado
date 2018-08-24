@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ static_url('main.css')}}">
+        <script type="text/javascript" src="{{ static_url('main.js')}}"></script>
+        <title>Titulo</title>
+    </head>
+    <body>
+        <h1>Inventario del café</h1>
+
+        <table>
+            <tr>
+                <th class="left title">Café</th>
+                <th class="left title">Cantidad</th>
+                <th class="left title">Mínimo</th>
+                <th class="left title">Precio</th>
+                <th class="title">Faltante</th>
+            </tr>
+
+            {% for element in dict %}
+                <tr>
+                    <td class="left">{{ element }}</td>
+                    <td class="left">{{ dict[element]["cantidad"] }}
+                        <button id="{{ element }}" onclick="one_less(this.id)">-1</button>
+                        <button id="{{ element }}" onclick="ten_more(this.id)">+10</button>
+                    </td>
+                    <td class="left">{{ dict[element]["minimo"] }}</td>
+                    <td class="left">{{ dict[element]["precio"] }}</td>
+                    <td>{{ dict[element]["faltante"] }}</td>
+                </tr>
+            {% end %}
+        </table>
+
+        <form method="post">
+            <table>
+                <tr>
+                    <td class="left"><input class="input" type="text" name="name"></td>
+                    <td class="left"><input class="input" type="number" name="quantity"></td>
+                    <td class="left"><input class="input" type="number" name="minimum"></td>
+                    <td class="left"><input class="input" type="number" name="price" step="0.01"></td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <input type="submit">
+        </form>
+    </body>
+</html>
