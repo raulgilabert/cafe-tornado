@@ -12,6 +12,12 @@ td {
     width: 120px
 }
 
+th {
+	padding: 5px;
+    text-align:center;
+    width: 120px
+}
+
 .left {
     border-right: 1px solid #000;
 }
