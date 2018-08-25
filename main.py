@@ -9,6 +9,8 @@ base = sqlite3.connect("datos.db")
 
 cursor = base.cursor()
 
+cursor.execute("CREATE TABLE IF NOT EXISTS datos (Nombre TEXT UNIQUE, Cantidad INTEGER, Minimo INTEGER, Precio INTEGER)")
+
 
 class MainWeb(tornado.web.RequestHandler):
     def redirect_to_main(self):
