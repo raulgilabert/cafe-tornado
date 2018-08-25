@@ -70,15 +70,13 @@ class MainWeb(tornado.web.RequestHandler):
         minimum = self.get_argument("minimum")
         quantity = self.get_argument("quantity")
 
-        pprint.pprint(self.request.arguments)
-
-        print(quantity)
+        print(quantity, minimum)
 
         try:
             cursor.execute("INSERT INTO datos(Nombre, Cantidad, Minimo) VALUES(?, ?, ?)", (name, quantity, minimum))
 
-        except sqlite3.IntegrityError:
-            cursor.execute("UPDATE datos SET Cantidad=? AND Minimo=? WHERE Nombre=?", (quantity, minimum, name))
+        except:
+            cursor.execute("UPDATE datos SET Cantidad=?, Minimo=? WHERE Nombre=?", (quantity, minimum, name))
 
         base.commit()
 
