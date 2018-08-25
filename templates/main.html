@@ -21,10 +21,13 @@
                 <tr>
                     <td class="left">{{ element }}</td>
                     <td class="left">{{ dict[element]["cantidad"] }}
-                        <button id="{{ element }}" onclick="one_less(this.id)">-10</button>
-                        <button id="{{ element }}" onclick="ten_more(this.id)">+10</button>
+                        <button id="{{ element }}" onclick="q_one_less(this.id)">-10</button>
+                        <button id="{{ element }}" onclick="q_ten_more(this.id)">+10</button>
                     </td>
-                    <td class="left">{{ dict[element]["minimo"] }}</td>
+                    <td class="left">{{ dict[element]["minimo"] }}
+                        <button id="{{ element }}" onclick="m_one_less(this.id)">-10</button>
+                        <button id="{{ element }}" onclick="m_ten_more(this.id)">+10</button>
+                    </td>
                     <td>{{ dict[element]["faltante"] }}</td>
                 </tr>
             {% end %}

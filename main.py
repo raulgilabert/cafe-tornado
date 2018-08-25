@@ -29,17 +29,31 @@ class MainWeb(tornado.web.RequestHandler):
     def get(self):
         name = self.get_argument("name", True)
         quantity = self.get_argument("quantity", True)
+        data = self.get_argument("data", True)
 
         if isinstance(name, str):
-            quantity = int(quantity)
 
-            cursor.execute("SELECT Cantidad FROM datos WHERE Nombre=?", (name,))
+            if data == "q":
+                quantity = int(quantity)
 
-            quantity_2 = cursor.fetchall()
+                cursor.execute("SELECT Cantidad FROM datos WHERE Nombre=?", (name,))
 
-            quantity = quantity + int(quantity_2[0][0])
+                quantity_2 = cursor.fetchall()
 
-            cursor.execute("UPDATE datos SET Cantidad=? WHERE Nombre=?", (quantity, name))
+                quantity = quantity + int(quantity_2[0][0])
+
+                cursor.execute("UPDATE datos SET Cantidad=? WHERE Nombre=?", (quantity, name))
+
+            if data == "m":
+                quantity = int(quantity)
+
+                cursor.execute("SELECT Minimo FROM datos WHERE Nombre=?", (name,))
+
+                quantity_2 = cursor.fetchall()
+
+                quantity = quantity + int(quantity_2[0][0])
+
+                cursor.execute("UPDATE datos SET Minimo=? WHERE Nombre=?", (quantity, name))
 
             base.commit()
 
