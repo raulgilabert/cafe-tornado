@@ -1,5 +1,5 @@
 function one_less(id) {
-    location.href = location.href.split("?")[0] + "?name=" + id + "&quantity=-1"
+    location.href = location.href.split("?")[0] + "?name=" + id + "&quantity=-10"
 };
 
 function ten_more(id) {

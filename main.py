@@ -59,8 +59,7 @@ class MainWeb(tornado.web.RequestHandler):
                 dictionary[element[0]] = {
                     "cantidad": element[1],
                     "minimo": element[2],
-                    "faltante": num,
-                    "precio": element[3]
+                    "faltante": num
                 }
 
 
@@ -70,15 +69,14 @@ class MainWeb(tornado.web.RequestHandler):
         name = self.get_argument("name")
         minimum = self.get_argument("minimum")
         quantity = self.get_argument("quantity")
-        price = self.get_argument("price")
 
         print(quantity)
 
         try:
-            cursor.execute("INSERT INTO datos(Nombre, Cantidad, Precio, Minimo) VALUES(?, ?, ?, ?)", (name, quantity, price, minimum))
+            cursor.execute("INSERT INTO datos(Nombre, Cantidad, Minimo) VALUES(?, ?, ?, ?)", (name, quantity, minimum))
 
         except sqlite3.IntegrityError:
-            cursor.execute("UPDATE datos SET Cantidad=? AND Minimo=? AND Precio=? WHERE Nombre=?", (quantity, minimum, price, name))
+            cursor.execute("UPDATE datos SET Cantidad=? AND Minimo=? WHERE Nombre=?", (quantity, minimum, name))
 
         base.commit()
 
