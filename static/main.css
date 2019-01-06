@@ -18,6 +18,10 @@ th {
     width: 120px
 }
 
+.el {
+    width: 250px
+}
+
 .left {
     border-right: 1px solid #000;
 }
@@ -28,5 +32,6 @@ th {
 }
 
 .input {
-    width: 90px;
+    width: 98%;
 }
+

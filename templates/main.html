@@ -11,7 +11,7 @@
 
         <table>
             <tr>
-                <th class="left title">Café</th>
+                <th class="left title el">Elemento</th>
                 <th class="left title">Cantidad</th>
                 <th class="left title">Mínimo</th>
                 <th class="title">Faltante</th>
@@ -19,16 +19,16 @@
 
             {% for element in dict %}
                 <tr>
-                    <td class="left">{{ element }}</td>
-                    <td class="left">{{ dict[element]["cantidad"] }}
+                    <td class="left title el">{{ element }}</td>
+                    <td class="left title">{{ dict[element]["cantidad"] }}
                         <button id="{{ element }}" onclick="q_one_less(this.id)">-10</button>
                         <button id="{{ element }}" onclick="q_ten_more(this.id)">+10</button>
                     </td>
-                    <td class="left">{{ dict[element]["minimo"] }}
+                    <td class="left title">{{ dict[element]["minimo"] }}
                         <button id="{{ element }}" onclick="m_one_less(this.id)">-10</button>
                         <button id="{{ element }}" onclick="m_ten_more(this.id)">+10</button>
                     </td>
-                    <td>{{ dict[element]["faltante"] }}</td>
+                    <td class="title">{{ dict[element]["faltante"] }}</td>
                 </tr>
             {% end %}
         </table>
@@ -36,7 +36,7 @@
         <form method="post">
             <table>
                 <tr>
-                    <td class="left"><input class="input" type="text" name="name" required></td>
+                    <td class="left el"><input class="input" type="text" name="name" required></td>
                     <td class="left"><input class="input" type="number" name="quantity" value="0" required></td>
                     <td class="left"><input class="input" type="number" name="minimum" value="0" required></td>
                     <td></td>
